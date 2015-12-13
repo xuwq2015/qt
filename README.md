@@ -12,3 +12,6 @@ systemSetting:
 
 md5:
 md5加密函数
+
+main.cpp:
+向qml中注册c++类。
