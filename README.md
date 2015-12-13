@@ -15,3 +15,9 @@ md5加密函数
 
 main.cpp:
 向qml中注册c++类。
+
+qml目录：
+qml文件。
+
+qml/FunctionButton.qml:
+自定义功能栏按钮。
