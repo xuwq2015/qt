@@ -16,6 +16,7 @@ class TcpServer : public QObject
 public:
     explicit TcpServer(int tcpPort, QObject *parent = 0);
 
+	QString getIP();
 public:
     QTcpServer *tcpService;
     QTcpSocket *tcpSocket;

@@ -26,3 +26,26 @@ void TcpServer::onReadyRead() {
     readData = tcpSocket->readAll();
 }
 
+QString TcpServer::getIP() { //返回服务器地址
+    QString ipAddress;
+    QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
+
+    // use the first non-localhost IPv4 address
+    for (int i = 0; i < ipAddressesList.size(); ++i) {
+        if(ipAddressesList.at(i) != QHostAddress::LocalHost &&
+            ipAddressesList.at(i).toIPv4Address()) {
+            ipAddress = ipAddressesList.at(i).toString();
+            break;
+        }
+    }
+
+    // if we did not find one, use IPv4 localhost
+    if (ipAddress.isEmpty()) {
+        ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
+    }
+//    ipAddress = downlinkService->serverAddress().toString();
+//    if(ipAddress.isNull()) {
+//        qDebug()<<"ip地址为空";
+//    }
+    return ipAddress;
+}
